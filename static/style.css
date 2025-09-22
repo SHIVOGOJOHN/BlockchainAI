@@ -1,0 +1,736 @@
+/* General Body and Container Styling */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    margin: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero-section h1 {
+    color: #fff;
+    font-size: 3.5em;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.hero-section .tagline {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.3em;
+}
+
+/* Selection Cards for Index Page */
+.selection-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.selection-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 40px;
+    width: 320px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.selection-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.selection-card .icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.selection-card h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.selection-card p {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* About Link */
+.about-link {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 1.2em;
+}
+
+.about-link a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.about-link a:hover {
+    color: #fff;
+}
+
+/* General Form and other styles from the previous CSS */
+
+/* Headings */
+h2 {
+    color: #2d3748;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 10px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Form Elements */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Space between grid items */
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 0; /* Reset margin as gap handles spacing */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.95em;
+}
+
+.tooltip-icon {
+    cursor: help;
+    margin-left: 5px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+input[type="number"],
+input[type="file"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="number"]:focus,
+input[type="file"]:focus {
+    border-color: #4299e1; /* Blue accent on focus */
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.25);
+    outline: none;
+}
+
+input[type="file"] {
+    padding: 10px;
+}
+
+/* Buttons */
+button {
+    background-color: #4299e1; /* Primary blue */
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 66px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    width: 100%; /* Default to 100% */
+    box-sizing: border-box;
+    margin-top: 15px;
+}
+
+/* Specific style for the prediction button in manual_predict.html */
+.card form button[type="submit"] {
+    width: auto; /* Override 100% width */
+    min-width: 200px; /* Give it a reasonable minimum width */
+    display: block; /* Make it a block element to apply margin auto */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px; /* More space above the button */
+}
+
+button:hover {
+    background-color: #3182ce; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Error Messages */
+.error-messages {
+    background-color: #fff5f5;
+    border: 1px solid #fc8181;
+    color: #c53030;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+}
+
+.error-messages ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding: 0;
+}
+
+.error-messages li {
+    margin-bottom: 8px;
+}
+
+/* Results Table */
+.results-table {
+    margin-top: 30px;
+}
+
+.results-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.results-table th,
+.results-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.results-table th {
+    background-color: #edf2f7;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 1em;
+}
+
+.results-table tr:last-child td {
+    border-bottom: none;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f7fafc;
+}
+
+.results-table tr:hover {
+    background-color: #ebf8ff;
+}
+
+.results-table pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #e2e8f0;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    color: #333;
+}
+
+/* Links */
+.back-link {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.1em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .selection-cards {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .selection-card {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 12px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .hero-section h1 {
+        font-size: 2em;
+    }
+
+    .selection-card {
+        padding: 20px;
+    }
+
+    .selection-card .icon {
+        font-size: 3em;
+    }
+
+    .selection-card h3 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    input[type="number"],
+    input[type="file"],
+    button {
+        font-size: 0.9em;
+    }
+}
+
+.repredict-button {
+    background-color: #4299e1; /* Primary blue */
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 66px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    width: auto; /* Override 100% width */
+    min-width: 200px; /* Give it a reasonable minimum width */
+    display: block; /* Make it a block element to apply margin auto */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px; /* More space above the button */
+    text-decoration: none; /* Remove underline from link-like button */
+}
+
+.repredict-button:hover {
+    background-color: #3182ce; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+.repredict-button:active {
+    transform: translateY(0);
+}
+
+.model-info {
+    background-color: #e6f7ff;
+    border: 1px solid #91d5ff;
+    color: #0050b3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+}
+
+.model-info p {
+    margin: 5px 0;
+}
+
+.loading-spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.about-page .container {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.about-page h1,
+.about-page h2,
+.about-page h3 {
+    color: #1a202c;
+}
+
+.about-page p,
+.about-page li {
+    color: #333;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-upload-button {
+    background-color: #4299e1;
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 66px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.file-upload-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.file-name {
+    margin-left: 15px;
+    font-size: 1em;
+    color: #666;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.result-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.result-header {
+    padding: 20px;
+    background-color: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.result-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.prediction-buy {
+    color: #48bb78; /* Green */
+}
+
+.prediction-not-buy {
+    color: #f56565; /* Red */
+}
+
+.result-body {
+    padding: 20px;
+}
+
+.probability-section {
+    margin-bottom: 20px;
+}
+
+.probability-section h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #e2e8f0;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4299e1;
+    border-radius: 5px;
+}
+
+.probability-text {
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.input-data-section h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.results-page .container {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.results-page h1,
+.results-page h2,
+.results-page h3,
+.results-page h4 {
+    color: #1a202c;
+}
+
+.results-page p,
+.results-page li {
+    color: #333;
+}
+
+.input-data-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.input-data-section th,
+.input-data-section td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.input-data-section tr:last-child td {
+    border-bottom: none;
+}
+
+.feature-importance-section {
+    margin-top: 20px;
+}
+
+.feature-importance-section h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+/* Tabbed Interface for Results */
+.tab-nav {
+    overflow: hidden;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+}
+
+.tab-nav button.tab-link {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #4a5568;
+    border-radius: 6px 6px 0 0;
+    width: auto; /* Override button defaults */
+    margin: 0;
+}
+
+.tab-nav button.tab-link:hover {
+    background-color: #edf2f7;
+    transform: none; /* Override button hover effect */
+}
+
+.tab-nav button.tab-link.active {
+    background-color: #fff;
+    color: #4299e1;
+    border: 1px solid #e2e8f0;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+}
+
+.tab-content {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+
+.plotly-plot-section .js-plotly-plot {
+    margin: 0 auto; /* Center the plot */
+}
+
+/* Recommendations List Styling */
+.recommendations-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.recommendations-list li {
+    background-color: #e6f7ff;
+    border-left: 4px solid #4299e1;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 0 4px 4px 0;
+    font-size: 1.05em;
+}
+
+/* Dashboard Specific Styles */
+.dashboard-plots {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.plot-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow: hidden; /* Ensure plots don't overflow */
+}
+
+@media (min-width: 768px) {
+    .dashboard-plots {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Two columns on larger screens */
+    }
+}
+
+.plot-description {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Dashboard Specific Styles */
+.dashboard-plots {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.plot-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow: hidden; /* Ensure plots don't overflow */
+}
+
+@media (min-width: 768px) {
+    .dashboard-plots {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Two columns on larger screens */
+    }
+}
+
+/* Footer Styling */
+.app-footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Push footer to the bottom in flexbox */
+    background-color: rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9em;
+}
