@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="about-page">
+    <div class="container">
+        <h1>About This System</h1>
+        <div class="card">
+            <h2>Prediction System for Store A</h2>
+            <p>This is the prediction system for Store A, based on customer data, using a machine learning model trained with federated learning.</p>
+            <h3>How It Works</h3>
+            <p>The prediction model is the result of a federated learning process where multiple models were trained on different datasets. This application uses the best performing and latest model from that process to make predictions on new customer data for Store A.</p>
+            <h3>Technologies Used</h3>
+            <ul>
+                <li><strong>Federated Learning:</strong> Flower (flwr)</li>
+                <li><strong>Machine Learning:</strong> TensorFlow, Keras</li>
+                <li><strong>Backend:</strong> FastAPI, Flask</li>
+                <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+            </ul>
+        </div>
+        <p class="back-link"><a href="/">← Back to Home</a></p>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2025 Store A Customer Prediction. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
