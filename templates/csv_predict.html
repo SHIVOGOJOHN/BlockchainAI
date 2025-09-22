@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Batch Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="loading-spinner" class="loading-spinner" style="display: none;"></div>
+    <div class="container">
+        <h1>CSV Batch Prediction</h1>
+        <p class="tagline">Upload a CSV file to get predictions for multiple entries.</p>
+
+        <div class="card">
+            <form action="/predict" method="post" enctype="multipart/form-data" onsubmit="showSpinner()">
+                <div class="form-group">
+                    <label for="csv_file">Select CSV File:</label>
+                    <div class="file-upload-wrapper">
+                        <label for="csv_file" class="file-upload-button">Choose File</label>
+                        <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
+                        <span id="file-name" class="file-name">No file chosen</span>
+                    </div>
+                </div>
+                <button type="submit">Upload and Predict</button>
+            </form>
+        </div>
+
+        <p class="back-link"><a href="/">← Back to Home</a></p>
+    </div>
+
+    <script>
+        function showSpinner() {
+            document.getElementById('loading-spinner').style.display = 'block';
+        }
+
+        document.getElementById('csv_file').addEventListener('change', function() {
+            var fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+    <footer class="app-footer">
+        <p>&copy; 2025 Store A Customer Prediction. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

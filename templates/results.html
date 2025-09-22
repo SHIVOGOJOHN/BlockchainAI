@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="results-page">
+    <div class="container">
+        <h1>Prediction Results</h1>
+
+        {% if model_version and last_updated %}
+        <div class="model-info">
+            <p><strong>Model Version:</strong> {{ model_version }}</p>
+            <p><strong>Last Updated:</strong> {{ last_updated | format_timestamp }}</p>
+        </div>
+        {% endif %}
+
+        {% if errors %}
+            <div class="error-messages">
+                <h2>Errors:</h2>
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {% if predictions %}
+            <div class="results-grid">
+                {% for item in predictions %}
+                <div class="result-card">
+                    <div class="result-header">
+                        <h3>Prediction: <span class="prediction-{{ 'buy' if item.prediction == 1 else 'not-buy' }}">{{ 'Customer will buy' if item.prediction == 1 else 'Customer will not buy' }}</span></h3>
+                    </div>
+                    <div class="result-body">
+                        
+                        <div class="tab-nav">
+                            <button class="tab-link active" onclick="openTab(event, 'probability-{{ loop.index0 }}')">Probability</button>
+                            <button class="tab-link" onclick="openTab(event, 'input-{{ loop.index0 }}')">Input Data</button>
+                            {% if item.plotly_plot_html %}<button class="tab-link" onclick="openTab(event, 'plot-{{ loop.index0 }}')">Explanation</button>{% endif %}
+                            {% if item.recommendations %}<button class="tab-link" onclick="openTab(event, 'recs-{{ loop.index0 }}')">Recommendations</button>{% endif %}
+                        </div>
+
+                        <div id="probability-{{ loop.index0 }}" class="tab-content" style="display:block;">
+                            <div class="probability-section">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: {{ item.probability * 100 }}%;"></div>
+                                </div>
+                                <p class="probability-text">{{ "%.2f"|format(item.probability * 100) }}%</p>
+                            </div>
+                        </div>
+
+                        <div id="input-{{ loop.index0 }}" class="tab-content">
+                            <div class="input-data-section">
+                                <table>
+                                    <tbody>
+                                        {% for key, value in item.input.items() %}
+                                        <tr>
+                                            <td><strong>{{ key.replace('_', ' ') }}</strong></td>
+                                            <td>{{ value }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        {% if item.plotly_plot_html %}
+                        <div id="plot-{{ loop.index0 }}" class="tab-content">
+                            <div class="plotly-plot-section">
+                                <p class="plot-description">The plot shows you which features are pushing the prediction higher (blue bars) and which are pushing it lower (red bars), and by how much.</p>
+                                {{ item.plotly_plot_html | safe }}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if item.recommendations %}
+                        <div id="recs-{{ loop.index0 }}" class="tab-content">
+                            <ul class="recommendations-list">
+                                {% for rec in item.recommendations %}
+                                <li>{{ rec }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if predictions and predictions[0].input %}
+            <form action="{{ url_for('manual_predict_form') }}" method="post">
+                <input type="hidden" name="previous_input" value='{{ predictions[0].input | tojson }}'>
+                <button type="submit" class="repredict-button">Modify Input & Re-predict</button>
+            </form>
+            {% endif %}
+
+            {% if download_filename %}
+            <a href="{{ url_for('download_results', filename=download_filename) }}" class="repredict-button">Download Results</a>
+            {% endif %}
+
+        {% else %}
+            <p>No predictions to display.</p>
+        {% endif %}
+
+    </div>
+
+    <script>
+    function openTab(evt, tabName) {
+      let i, tabcontent, tablinks;
+      let card = evt.currentTarget.closest('.result-card');
+      
+      tabcontent = card.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      
+      tablinks = card.getElementsByClassName("tab-link");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    // Automatically open the first tab for the first card on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const firstTabButton = document.querySelector('.tab-link');
+        if (firstTabButton) {
+            firstTabButton.click();
+        }
+    });
+    </script>
+    <footer class="app-footer">
+        <p>&copy; 2025 Store A Customer Prediction. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Prediction Input</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="loading-spinner" class="loading-spinner" style="display: none;"></div>
+    <div class="container">
+        <h1>Manual Prediction Input</h1>
+        <p class="tagline">Enter the details below to get a prediction.</p>
+
+        <div class="card">
+            <form action="/predict" method="post" onsubmit="return validateAndShowSpinner()">
+                <div class="form-grid">
+                    {% for feature in features %}
+                    <div class="form-group">
+                        <label for="{{ feature }}">
+                            {{ feature.replace('_', ' ') }}
+                            {% if descriptions.get(feature) %}
+                                <span class="tooltip-icon" title="{{ descriptions.get(feature) }}">ℹ️</span>
+                            {% endif %}
+                        </label>
+                        <input type="number" step="any" id="{{ feature }}" name="{{ feature }}" value="{{ default_values.get(feature, '') }}" required>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="submit">Get Prediction</button>
+            </form>
+        </div>
+
+        <p class="back-link"><a href="/">← Back to Home</a></p>
+    </div>
+
+    <script>
+        function validateAndShowSpinner() {
+            if (validateForm()) {
+                showSpinner();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function showSpinner() {
+            document.getElementById('loading-spinner').style.display = 'block';
+        }
+
+        function validateForm() {
+            const validations = {
+                'Age': { min: 18, max: 100, message: 'Age must be between 18 and 100.' },
+                'Income': { min: 0, message: 'Income must be a positive number.' },
+                'Loyalty_Score': { min: 0, max: 100, message: 'Loyalty Score must be between 0 and 100.' },
+                'Prior_Purchases': { min: 0, message: 'Prior Purchases must be a non-negative number.' },
+                'Avg_Spend': { min: 0, message: 'Average Spend must be a positive number.' },
+                'Recency': { min: 0, message: 'Recency must be a non-negative number.' },
+                'Browsing_Time': { min: 0, message: 'Browsing Time must be a non-negative number.' },
+                'Clicks_On_Promo': { min: 0, message: 'Clicks On Promo must be a non-negative number.' },
+                'Purchase_Frequency': { min: 0, message: 'Purchase Frequency must be a non-negative number.' },
+                'High_Value_Customer': { min: 0, max: 1, message: 'High Value Customer must be 0 or 1.' },
+                'Engagement_Score': { min: 0, max: 100, message: 'Engagement Score must be between 0 and 100.' },
+                'Gender_Male': { min: 0, max: 1, message: 'Gender Male must be 0 or 1.' },
+                'Promotion_Type_Discount': { min: 0, max: 1, message: 'Promotion Type Discount must be 0 or 1.' },
+                'Promotion_Type_FlashSale': { min: 0, max: 1, message: 'Promotion Type FlashSale must be 0 or 1.' },
+                'Promotion_Type_LoyaltyPoints': { min: 0, max: 1, message: 'Promotion Type LoyaltyPoints must be 0 or 1.' },
+                'Channel_Email': { min: 0, max: 1, message: 'Channel Email must be 0 or 1.' },
+                'Channel_In_store': { min: 0, max: 1, message: 'Channel In-store must be 0 or 1.' },
+                'Channel_SMS': { min: 0, max: 1, message: 'Channel SMS must be 0 or 1.' },
+                'Time_of_Day_Evening': { min: 0, max: 1, message: 'Time of Day Evening must be 0 or 1.' },
+                'Time_of_Day_Morning': { min: 0, max: 1, message: 'Time of Day Morning must be 0 or 1.' }
+            };
+
+            for (const feature in validations) {
+                const input = document.getElementById(feature);
+                const value = parseFloat(input.value);
+                const validation = validations[feature];
+
+                if (isNaN(value)) {
+                    alert(`Please enter a valid number for ${feature.replace(/_/g, ' ')}.`);
+                    return false;
+                }
+
+                if (validation.min !== undefined && value < validation.min) {
+                    alert(validation.message);
+                    return false;
+                }
+
+                if (validation.max !== undefined && value > validation.max) {
+                    alert(validation.message);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    </script>
+    <footer class="app-footer">
+        <p>&copy; 2025 Store A Customer Prediction. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

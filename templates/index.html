@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store A Customer Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1>Store A Customer Prediction</h1>
+            <p class="tagline">Predict Customer Behavior with AI and Blockchain</p>
+        </div>
+
+        <div class="selection-cards">
+            <a href="{{ url_for('manual_predict_form') }}" class="selection-card">
+                <span class="icon">📝</span>
+                <h3>Manual Prediction</h3>
+                <p>Enter customer data manually to get a prediction and explanation.</p>
+            </a>
+            <a href="{{ url_for('csv_predict_form') }}" class="selection-card">
+                <span class="icon">📊</span>
+                <h3>CSV Prediction</h3>
+                <p>Upload a CSV file with multiple customer records for batch predictions.</p>
+            </a>
+            <a href="{{ url_for('dashboard') }}" class="selection-card">
+                <span class="icon">📈</span>
+                <h3>Model Dashboard</h3>
+                <p>View overall model performance and global feature explanations.</p>
+            </a>
+        </div>
+
+        <div class="about-link">
+            <a href="{{ url_for('about') }}">Learn more about this system</a>
+        </div>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2025 Store A Customer Prediction. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
