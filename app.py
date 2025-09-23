@@ -8,7 +8,9 @@ import numpy as np
 import plotly.graph_objects as go
 from github import Github, Auth
 import io
+from dotenv import load_dotenv
 
+load_dotenv() # Load environment variables from .env file
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB max upload size
@@ -140,14 +142,11 @@ def generate_recommendations(feature_importances):
     return recommendations
 
 # --- GitHub CSV Update Function ---
-def update_github_csv(new_data_df: pd.DataFrame, github_file_path: str, commit_message: str):
-    github_pat = os.getenv("GITHUB_PAT")
-    repo_owner = os.getenv("GITHUB_REPO_OWNER")
-    repo_name = os.getenv("GITHUB_REPO_NAME")
-    github_branch = os.getenv("GITHUB_BRANCH", "main") # Default to 'main'
+def update_github_csv(new_data_df: pd.DataFrame, repo_owner: str, repo_name: str, github_file_path: str, commit_message: str, github_branch: str = "main"):
+    github_pat = os.getenv("GITHUB_PAT") # Assuming a single PAT can access both repositories
 
-    if not all([github_pat, repo_owner, repo_name]):
-        print("Error: GitHub credentials not set in environment variables.")
+    if not github_pat:
+        print(f"Error: GITHUB_PAT not set in environment variables.")
         return False
 
     try:
@@ -168,18 +167,18 @@ def update_github_csv(new_data_df: pd.DataFrame, github_file_path: str, commit_m
             
             # Update file on GitHub
             repo.update_file(contents.path, commit_message, new_csv_content, contents.sha, branch=github_branch)
-            print(f"Successfully updated {github_file_path} on GitHub.")
+            print(f"Successfully updated {github_file_path} in {repo_owner}/{repo_name}.")
             return True
         except Exception as e:
             # File does not exist, create it
-            print(f"File {github_file_path} not found on GitHub, creating it. Error: {e}")
+            print(f"File {github_file_path} not found in {repo_owner}/{repo_name}, creating it. Error: {e}")
             new_csv_content = new_data_df.to_csv(index=False)
             repo.create_file(github_file_path, commit_message, new_csv_content, branch=github_branch)
-            print(f"Successfully created {github_file_path} on GitHub.")
+            print(f"Successfully created {github_file_path} in {repo_owner}/{repo_name}.")
             return True
             
     except Exception as e:
-        print(f"Error updating GitHub CSV: {e}")
+        print(f"Error updating GitHub CSV for {repo_owner}/{repo_name}: {e}")
         return False
 # --- End GitHub CSV Update Function ---
 
@@ -223,6 +222,9 @@ def dashboard():
             errors.append(dashboard_data["error"])
         else:
             accuracy = f"{dashboard_data.get('accuracy', 0) * 100:.2f}%"
+            data_version = dashboard_data.get('data_version')
+            model_version = dashboard_data.get('model_version')
+            last_updated = dashboard_data.get('last_updated')
 
             global_importances = dashboard_data.get('global_feature_importances')
             if global_importances:
@@ -412,11 +414,40 @@ def predict():
                 new_row_data['Will_Buy'] = int(predicted_value) if predicted_value is not None else 0
                 df_new_row = pd.DataFrame([new_row_data])
                 
-                github_file_path = os.getenv("GITHUB_RETRAINING_FILE_PATH", "data/manual_predictions_for_retraining.csv")
+                github_repos_config = [
+                    {
+                        "owner": os.getenv("GITHUB_REPO1_OWNER"),
+                        "name": os.getenv("GITHUB_REPO1_NAME"),
+                        "file_path": os.getenv("GITHUB_REPO1_FILE_PATH", "data/manual_predictions_for_retraining.csv"),
+                        "branch": os.getenv("GITHUB_REPO1_BRANCH", "main")
+                    },
+                    {
+                        "owner": os.getenv("GITHUB_REPO2_OWNER"),
+                        "name": os.getenv("GITHUB_REPO2_NAME"),
+                        "file_path": os.getenv("GITHUB_REPO2_FILE_PATH", "data/manual_predictions_for_retraining.csv"),
+                        "branch": os.getenv("GITHUB_REPO2_BRANCH", "main")
+                    }
+                ]
+                
                 commit_message = "Add new manual prediction for retraining"
                 
-                if not update_github_csv(df_new_row, github_file_path, commit_message):
-                    errors.append("Failed to save prediction to GitHub for retraining.")
+                all_successful = True
+                for repo_config in github_repos_config:
+                    if not repo_config["owner"] or not repo_config["name"]:
+                        errors.append(f"GitHub repository configuration incomplete for one of the targets.")
+                        all_successful = False
+                        continue
+
+                    if not update_github_csv(
+                        df_new_row,
+                        repo_config["owner"],
+                        repo_config["name"],
+                        repo_config["file_path"],
+                        commit_message,
+                        repo_config["branch"]
+                    ):
+                        errors.append(f"Failed to save prediction to GitHub for {repo_config['owner']}/{repo_config['name']}.")
+                        all_successful = False
 
             except requests.exceptions.RequestException as e:
                 errors.append(f"Error connecting to prediction API: {e}")
@@ -428,7 +459,6 @@ def predict():
 @app.route('/download_results/<filename>')
 def download_results(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
