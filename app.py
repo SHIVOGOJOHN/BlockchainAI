@@ -20,10 +20,11 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB max upload size
 # Configure Cache
 app.config['CACHE_TYPE'] = "SimpleCache"  # Can be 'redis', 'memcached', etc. for production
 app.config['CACHE_DEFAULT_TIMEOUT'] = 60 # Cache timeout in seconds
-cache = Cache(app)
+cache = Cache(
+    app)
 
-LEDGER_PATH = Path('data/ledger.json') # Path relative to flask_ui_app/app.py
-
+LEDGER_PATH = Path('/data/ledger.json') # Path relative to flask_ui_app/app.py
+#LEDGER_PATH = Path(__file__).parent / 'ledger.json'
 def load_ledger_data():
     if not LEDGER_PATH.exists():
         return []
