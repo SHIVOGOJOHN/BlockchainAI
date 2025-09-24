@@ -6,3 +6,4 @@ numpy
 plotly
 pyGithub
 python-dotenv
+Flask-Caching
