@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="results-page">
+    <div class="container">
+        <h1>Model Dashboard</h1>
+
+        {% if errors %}
+            <div class="error-messages">
+                <h2>Errors:</h2>
+                <ul>
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="model-info">
+
+            <p><strong>Round 10 Global Accuracy (Blockchain):</strong> {{ round_10_global_accuracy }}</p>
+            {% if data_version %}<p><strong>Data Version:</strong> {{ data_version | format_timestamp }}</p>{% endif %}
+            {% if model_version %}<p><strong>Model Version:</strong> {{ model_version }}</p>{% endif %}
+            {% if last_updated %}<p><strong>Model Last Updated:</strong> {{ last_updated | format_timestamp }}</p>{% endif %}
+        </div>
+
+        <div class="dashboard-plots">
+            <div class="plot-card">
+                {{ global_importance_plot | safe }}
+            </div>
+            <div class="plot-card">
+                {{ pdp_plot | safe }}
+            </div>
+        </div>
+
+        <button type="button" class="repredict-button" onclick="window.location.href='{{ url_for('index') }}'">Back to Home</button>
+
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2025 Store A Customer Prediction. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
