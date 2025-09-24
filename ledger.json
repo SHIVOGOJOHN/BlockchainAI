@@ -1,15 +1,15 @@
 [
-  {
-    "round": 1,
-    "timestamp": "2025-09-24T04:08:24.469004+00:00",
-    "global_accuracy": 0.787,
-    "node_accuracies": {
-      "Store_A": 0.815,
-      "Store_B": 0.729,
-      "Store_C": 0.817
-    },
-    "ipfs_hash": "Qm354bc7614e9484358c1b37b0bf340d8a0d2fbae29514",
-    "block_tx": "0x20b60d62b90d5ba1a6e84e9a23fa1544831ed12cf8e83d24ee8cc7719c0a0ee5",
-    "notes": "Entered round"
-  }
+    {
+        "round": 1,
+        "timestamp": "2025-09-25T02:21:01.419070",
+        "global_accuracy": 0.916562482714653,
+        "ipfs_hash": "Qmffe8e975e1374d3d92788c68fd7e00c53d96b7c9f9b6",
+        "block_tx": "0x47c9ff7ce03b8e3c0067bb2e09fbadf81c070db4c01bad88e733f782647c1696",
+        "notes": "Aggregated metrics for round 1",
+        "node_accuracies": {
+            "6ad365b7b0aa4406b710093b540de0fb": 0.9049999713897705,
+            "61ccc98228a34d05badab5c332c931f3": 0.9204166531562805,
+            "71482b6923e14351ba76e3cd4fa0de1e": 0.9049999713897705
+        }
+    }
 ]
