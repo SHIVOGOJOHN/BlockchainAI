@@ -23,8 +23,9 @@ app.config['CACHE_DEFAULT_TIMEOUT'] = 60 # Cache timeout in seconds
 cache = Cache(
     app)
 
-LEDGER_PATH = Path('/data/ledger.json') # Path relative to flask_ui_app/app.py
-#LEDGER_PATH = Path(__file__).parent / 'ledger.json'
+#LEDGER_PATH = Path('/data/ledger.json') # Path relative to flask_ui_app/app.py
+LEDGER_PATH = Path(__file__).parent / 'ledger.json'
+
 def load_ledger_data():
     if not LEDGER_PATH.exists():
         return []
