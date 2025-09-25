@@ -56,7 +56,7 @@ DEFAULT_INPUT_VALUES = {
     "Clicks_On_Promo": 3,
     "Purchase_Frequency": 1.8,
     "High_Value_Customer": 1,
-    "Engagement_Score": 12,
+    "Engagement_Score": 5,
     "Gender_Male": 1,
     "Promotion_Type_Discount": 1,
     "Promotion_Type_FlashSale": 0,
