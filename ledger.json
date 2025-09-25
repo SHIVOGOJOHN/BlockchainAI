@@ -1,132 +1,15 @@
 [
     {
         "round": 1,
-        "timestamp": "2025-09-25T06:54:17.758768",
-        "global_accuracy": 0.9047169741594566,
-        "ipfs_hash": "Qmbe33b898c5df660c432892ed4f81b2c72cf9f94ea4cd",
-        "block_tx": "0x2eb94ff8dc8946439a183cd59db09a2f8a5e6d67bb4eca811f0b132a75117193",
+        "timestamp": "2025-09-25T07:09:09.950264",
+        "global_accuracy": 0.6726415112333478,
+        "ipfs_hash": "Qm82f8afe7d208c85022498b3e15e8f6a86563b7c7c23f",
+        "block_tx": "0x4daf96331946945186a795fa838a1a8faf8084f06d399faa6d37c92d800847f2",
         "notes": "Aggregated metrics for round 1",
         "node_accuracies": {
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9638888835906982,
-            "219c77b3d43c43ee92e88049dcc96771": 0.9300000071525574,
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.8324999809265137
-        }
-    },
-    {
-        "round": 2,
-        "timestamp": "2025-09-25T06:54:30.318513",
-        "global_accuracy": 0.9141509431713032,
-        "ipfs_hash": "Qm33af61d0f71d7c59bf113bebb6e84097513c9ea3403c",
-        "block_tx": "0xe415e715a18e89c5ca431ac080e94a7acebcc8b9b33c63be76590265796b9ef8",
-        "notes": "Aggregated metrics for round 2",
-        "node_accuracies": {
-            "219c77b3d43c43ee92e88049dcc96771": 0.9566666483879089,
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.8650000095367432,
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9333333373069763
-        }
-    },
-    {
-        "round": 3,
-        "timestamp": "2025-09-25T06:54:42.414776",
-        "global_accuracy": 0.9169811358991659,
-        "ipfs_hash": "Qm8525eaec08e550071f6e03f050799ee15c172b75a39e",
-        "block_tx": "0x7f3d83c974528de7984b3318f3aabcf8c4acba8ea0222d901bba8bc91efebb4a",
-        "notes": "Aggregated metrics for round 3",
-        "node_accuracies": {
-            "219c77b3d43c43ee92e88049dcc96771": 0.9633333086967468,
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9388889074325562,
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.862500011920929
-        }
-    },
-    {
-        "round": 4,
-        "timestamp": "2025-09-25T06:54:54.212435",
-        "global_accuracy": 0.921698122654321,
-        "ipfs_hash": "Qmbc8b27928b607959aff704a5df7bf906bd4f3af6b826",
-        "block_tx": "0x7da252786bc7713a04f83aad2435e16746a2d23294c00dbe4168f3ad2f537473",
-        "notes": "Aggregated metrics for round 4",
-        "node_accuracies": {
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9416666626930237,
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.8650000095367432,
-            "219c77b3d43c43ee92e88049dcc96771": 0.9733333587646484
-        }
-    },
-    {
-        "round": 5,
-        "timestamp": "2025-09-25T06:55:10.253483",
-        "global_accuracy": 0.9207547273275987,
-        "ipfs_hash": "Qm2d419a07fbc576265377bd6135d65a898a0df7dafd48",
-        "block_tx": "0x1b335d2e25730c6a348311505bc1763d7b87fa71d2e33c8004e47c0b77dcd79a",
-        "notes": "Aggregated metrics for round 5",
-        "node_accuracies": {
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.862500011920929,
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9416666626930237,
-            "219c77b3d43c43ee92e88049dcc96771": 0.9733333587646484
-        }
-    },
-    {
-        "round": 6,
-        "timestamp": "2025-09-25T06:55:22.720810",
-        "global_accuracy": 0.9207547273275987,
-        "ipfs_hash": "Qm5c777fd485fc21f362038be5fec809df327fa2b2a320",
-        "block_tx": "0x214746a3c207d487f162c19de282ab6d29a3f09d33bbaff669a862639cd5a709",
-        "notes": "Aggregated metrics for round 6",
-        "node_accuracies": {
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.862500011920929,
-            "219c77b3d43c43ee92e88049dcc96771": 0.9733333587646484,
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9416666626930237
-        }
-    },
-    {
-        "round": 7,
-        "timestamp": "2025-09-25T06:55:35.004829",
-        "global_accuracy": 0.9216981159066254,
-        "ipfs_hash": "Qma3ba5006033c8997c2073125a47cbe14f839c25b41d5",
-        "block_tx": "0x01053efce25bfa838b08ca290170c3d41b2e2a6a4c51ef082314573e2688441b",
-        "notes": "Aggregated metrics for round 7",
-        "node_accuracies": {
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.862500011920929,
-            "219c77b3d43c43ee92e88049dcc96771": 0.9733333587646484,
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9444444179534912
-        }
-    },
-    {
-        "round": 8,
-        "timestamp": "2025-09-25T06:55:47.543341",
-        "global_accuracy": 0.9198113320008764,
-        "ipfs_hash": "Qmae31face9a8eea4fcdfee191eb9b8ed8de56e1900b0d",
-        "block_tx": "0x6aa9ba1e6dcdd3e224be1dc54d76b0c392304fbbcf29efb1b5879670cf06989d",
-        "notes": "Aggregated metrics for round 8",
-        "node_accuracies": {
-            "219c77b3d43c43ee92e88049dcc96771": 0.9733333587646484,
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9416666626930237,
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.8600000143051147
-        }
-    },
-    {
-        "round": 9,
-        "timestamp": "2025-09-25T06:56:00.910027",
-        "global_accuracy": 0.9235849200554613,
-        "ipfs_hash": "Qmfb715d9cdfc1652b44e129ab360ae4bd4e7331c5be4f",
-        "block_tx": "0x55baa488f9410809c3f1b6dca8cbd95adb163072f325bb9f0e0d276bb6762acd",
-        "notes": "Aggregated metrics for round 9",
-        "node_accuracies": {
-            "219c77b3d43c43ee92e88049dcc96771": 0.9800000190734863,
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.8600000143051147,
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9472222328186035
-        }
-    },
-    {
-        "round": 10,
-        "timestamp": "2025-09-25T06:56:13.455153",
-        "global_accuracy": 0.9235849200554613,
-        "ipfs_hash": "Qme2dcbf9e03763a6c332828fa606cfa72573c125bb2dc",
-        "block_tx": "0x9deee07246a2a2ca30ed8e9b5d4c4e8d1aae696afd8779b249982c2da62d796d",
-        "notes": "Aggregated metrics for round 10",
-        "node_accuracies": {
-            "dcbc9cd6caad44ef96f0e902c38987d9": 0.8600000143051147,
-            "219c77b3d43c43ee92e88049dcc96771": 0.9800000190734863,
-            "c5dfb7113a934218b57ec4e2bc5c6a9d": 0.9472222328186035
+            "699332c98bc94e40a5396c876524918b": 0.8583333492279053,
+            "5fdc453fe9d94ac1ab87a259f285769e": 0.35249999165534973,
+            "d0795d0b90df4f499af1cf663f5435e4": 0.8766666650772095
         }
     }
 ]
