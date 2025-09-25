@@ -50,5 +50,18 @@
             "cad4bdac454242afb7e34cc2529e54fb": 1.0,
             "4e61b07dc1b14db7b3d601dce979b146": 1.0
         }
+    },
+    {
+        "round": 5,
+        "timestamp": "2025-09-25T06:43:26.001267",
+        "global_accuracy": 0.9792452859428694,
+        "ipfs_hash": "Qmede5c2ccfd808c26a35b1ac89c2caa19dc60d81986e2",
+        "block_tx": "0x5237fa534d28052c920c24f8d8f3d353f5dc349ddb30c58bea1def4838a3b5c0",
+        "notes": "Aggregated metrics for round 5",
+        "node_accuracies": {
+            "4e61b07dc1b14db7b3d601dce979b146": 1.0,
+            "cad4bdac454242afb7e34cc2529e54fb": 0.9975000023841858,
+            "f328a823443d45ba8211df1b539676e0": 0.9300000071525574
+        }
     }
 ]
