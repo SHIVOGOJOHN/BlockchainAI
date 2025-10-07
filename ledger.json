@@ -1,41 +1,28 @@
 [
     {
         "round": 1,
-        "timestamp": "2025-10-07T15:15:47.170973",
-        "global_accuracy": 0.9047169876548479,
-        "ipfs_hash": "Qmb2e98203f515c1c2b3ec4bb23fcb1e3a04cf7d2b7727",
-        "block_tx": "0x95f48524bafa6633633dbeb3a00361844a2c753c437a78bdb7725f78ee2832ca",
+        "timestamp": "2025-10-07T15:19:52.300279",
+        "global_accuracy": 0.8905660375109259,
+        "ipfs_hash": "Qma44a6b3c6a5a86698a7d40d1642cce7f7c484a04bfa9",
+        "block_tx": "0x6a406e87106061ffc2555bfb21b6857d26c88d4371cef6d1a7e712e55c608dc8",
         "notes": "Aggregated metrics for round 1",
         "node_accuracies": {
-            "d441dc9e52fa4bf6a18f455bad62ba5b": 0.9750000238418579,
-            "3a6b24b4fce64a94933b5407e6305f10": 0.8149999976158142,
-            "9c7c07b6d1fc4955b9d5de219b7900f9": 0.9399999976158142
+            "7405cfd75b0446538662bc1d45491203": 0.8149999976158142,
+            "d736603f2c8a4e088fa92a4fbf7b5f6d": 0.9200000166893005,
+            "a60824ce16434d75b33d54b0d073c9d8": 0.949999988079071
         }
     },
     {
         "round": 2,
-        "timestamp": "2025-10-07T15:16:18.743130",
-        "global_accuracy": 0.91509433175033,
-        "ipfs_hash": "Qma106319e357e18e7e519fe484e00eb0e0f7ed7feb20d",
-        "block_tx": "0xf7b038f5938a685713c408e244601e87b1f0663de1532653f64dfe09697f9a5b",
+        "timestamp": "2025-10-07T15:19:59.410202",
+        "global_accuracy": 0.9047169831563842,
+        "ipfs_hash": "Qm5b6ac06fc44b5f0cf29e1c783196f84c491cade5d5ef",
+        "block_tx": "0x5e03bdf6b2261cea0813174eccc87412f44b204faa1e8b581677bc2beb11bd4a",
         "notes": "Aggregated metrics for round 2",
         "node_accuracies": {
-            "3a6b24b4fce64a94933b5407e6305f10": 0.8650000095367432,
-            "d441dc9e52fa4bf6a18f455bad62ba5b": 0.9277777671813965,
-            "9c7c07b6d1fc4955b9d5de219b7900f9": 0.9666666388511658
-        }
-    },
-    {
-        "round": 3,
-        "timestamp": "2025-10-07T15:16:36.963863",
-        "global_accuracy": 0.9132075647138199,
-        "ipfs_hash": "Qm37c29381184b6153c34996fd600b63b054653f51f61f",
-        "block_tx": "0x40f3c69e57e6b94e5afe57f8fad578d6a471e28a7d90ad682e7d4270ae9c915a",
-        "notes": "Aggregated metrics for round 3",
-        "node_accuracies": {
-            "9c7c07b6d1fc4955b9d5de219b7900f9": 0.9700000286102295,
-            "d441dc9e52fa4bf6a18f455bad62ba5b": 0.925000011920929,
-            "3a6b24b4fce64a94933b5407e6305f10": 0.8600000143051147
+            "d736603f2c8a4e088fa92a4fbf7b5f6d": 0.95333331823349,
+            "7405cfd75b0446538662bc1d45491203": 0.8550000190734863,
+            "a60824ce16434d75b33d54b0d073c9d8": 0.9194444417953491
         }
     }
 ]
